@@ -2,6 +2,7 @@ package com;
 
 import com.persistence.model.Word;
 import com.services.WordService;
+import com.web.controller.WordController;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,10 +15,10 @@ public class Application {
     }
 
     @Bean
-    ApplicationRunner applicationRunner(WordService wordService){
+    ApplicationRunner applicationRunner(WordController wordController){
         return args -> {
-            wordService.addWord(new Word("eerste woord"));
-            wordService.addWord(new Word("tweede woord"));
+            wordController.addWord(new Word("eerste woord"));
+            wordController.addWord(new Word("tweede woord"));
 
         };
     }
