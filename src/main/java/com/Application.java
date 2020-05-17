@@ -1,5 +1,6 @@
 package com;
 
+import com.persistence.WordRepository;
 import com.persistence.model.Word;
 import com.web.controller.WordController;
 import org.springframework.boot.ApplicationRunner;
@@ -14,10 +15,10 @@ public class Application {
     }
 
     @Bean
-    ApplicationRunner applicationRunner(WordController wordController){
+    ApplicationRunner applicationRunner(WordRepository wordRepository){
         return args -> {
-            wordController.addWord(new Word("eerste woord"));
-            wordController.addWord(new Word("tweede woord"));
+            wordRepository.save(new Word("eerste woord"));
+            wordRepository.save(new Word("tweede woord"));
 
         };
     }

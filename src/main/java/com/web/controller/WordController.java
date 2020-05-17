@@ -24,10 +24,10 @@ public class WordController {
         return wordRepository.findById(id);
     }
 
-    @RequestMapping("/add/{word}")
-    public @ResponseBody Word addWord(@PathVariable(value = "word") Word word){
-        return wordRepository.save(word);
-    }
+//    @RequestMapping("/add/{word}")
+//    public @ResponseBody Word addWord(@PathVariable(value = "word") Word word){
+//        return wordRepository.save(word);
+//    }
 
     WordController(WordRepository wordRepository){
         this.wordRepository = wordRepository;
