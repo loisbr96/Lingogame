@@ -7,7 +7,7 @@
 .project
 .settings
 .springBeans
-.properties
+
 
 ### IntelliJ IDEA ###
 .idea
@@ -24,6 +24,5 @@ nbdist/
 .nb-gradle/
 
 target/
-application.properties
-.application.properties
+
 
