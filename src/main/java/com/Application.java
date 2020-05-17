@@ -1,7 +1,7 @@
 package com;
 
 import com.persistence.model.Word;
-import com.persistence.model.WordRepository;
+import com.services.WordService;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,59 +14,11 @@ public class Application {
     }
 
     @Bean
-    ApplicationRunner applicationRunner(WordRepository wordRepository){
+    ApplicationRunner applicationRunner(WordService wordService){
         return args -> {
-            wordRepository.save(new Word("test"));
-            wordRepository.save(new Word("Effe checken"));
+            wordService.addWord(new Word("eerste woord"));
+            wordService.addWord(new Word("tweede woord"));
+
         };
     }
-
 }
-
-//@RestController
-//class HelloController {
-//    private final GreetingRepository greetingRepository;
-//
-//    @GetMapping("/")
-//    String hello(){
-//        return "hello world";
-//    }
-//
-//    @GetMapping("/greetings")
-//    Iterable<Greeting> greetings(){
-//        return greetingRepository.findAll();
-//    }
-//
-//    HelloController(GreetingRepository greetingRepository){
-//        this.greetingRepository = greetingRepository;
-//    }
-//}
-
-//@Entity
-//class Greeting {
-//    @Id
-//    @GeneratedValue
-//    private Long id;
-//
-//    @Column
-//    private String message;
-//
-//    public Greeting(){
-//
-//    }
-//
-//    public Greeting(String message){
-//        this.message = message;
-//    }
-//
-//    public Long getId(){
-//        return id;
-//    }
-//
-//    public String getMessage(){
-//        return message;
-//    }
-//
-//}
-
-//interface GreetingRepository extends CrudRepository<Greeting, Long>{}

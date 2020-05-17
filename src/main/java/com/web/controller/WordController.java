@@ -1,44 +1,36 @@
 package com.web.controller;
 
 import com.persistence.model.Word;
-import com.persistence.model.WordRepository;
 import com.services.WordService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
 
 @RestController
 public class WordController {
-    private final WordRepository wordRepository;
+    private final WordService wordService;
 
-    @Autowired
-    private WordService wordService;
+//    @Autowired
+//    private WordService wordService;
 
     @GetMapping("/")
     Iterable<Word> words(){
-        return wordRepository.findAll();
+        return wordService.findAllWords();
     }
 
-    @GetMapping("/id")
-    public Optional<Word> getWordById(Long id){
-        return wordRepository.findById(id);
+    @RequestMapping("/id/{id}")
+    public @ResponseBody Optional<Word> getWordById(@PathVariable(value = "id") Long id){
+        return wordService.findWord(id);
     }
 
-//    @GetMapping("/random")
-//    public Word getRandomWord(){
-//        return wordService.getRandomWord();
-//    }
-//
-//    @GetMapping("/import")
-//    public Word importWord(){
-//        return wordService.importWord();
-//    }
+    @RequestMapping("/add/{word}")
+    public @ResponseBody Word addWord(@PathVariable(value = "word") Word word){
+        return wordService.addWord(word);
+    }
 
-    WordController(WordRepository wordRepository){
-        this.wordRepository = wordRepository;
+    WordController(WordService wordService){
+        this.wordService = wordService;
     }
 }
 

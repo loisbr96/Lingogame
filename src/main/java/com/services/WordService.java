@@ -1,29 +1,29 @@
 package com.services;
 
 import com.persistence.model.Word;
+import com.persistence.WordRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import java.util.Optional;
+
 
 @Service
-public class WordService implements WordServiceInterface {
-    @Override
-    public ArrayList<Word> allWords() {
-        return null;
+public class WordService{
+    private final WordRepository wordRepository;
+
+    public Iterable<Word> findAllWords(){
+        return wordRepository.findAll();
     }
 
-    @Override
-    public Word getRandomWord() {
-        return null;
+    public Word addWord(Word word){
+        return wordRepository.save(word);
     }
 
-    @Override
-    public Word getWordById() {
-        return null;
+    public Optional<Word> findWord(Long id){
+        return wordRepository.findById(id);
     }
 
-    @Override
-    public Word importWord() {
-        return null;
+    WordService(WordRepository wordRepository){
+        this.wordRepository = wordRepository;
     }
 }
