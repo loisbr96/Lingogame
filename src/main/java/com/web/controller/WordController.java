@@ -2,7 +2,6 @@ package com.web.controller;
 
 import com.persistence.WordRepository;
 import com.persistence.model.Word;
-import com.services.WordService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
