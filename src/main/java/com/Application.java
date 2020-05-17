@@ -1,7 +1,6 @@
 package com;
 
 import com.persistence.model.Word;
-import com.services.WordService;
 import com.web.controller.WordController;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
