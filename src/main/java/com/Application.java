@@ -1,17 +1,11 @@
 package com;
 
+import com.persistence.model.Word;
+import com.persistence.model.WordRepository;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 
 @SpringBootApplication
 public class Application {
@@ -20,59 +14,59 @@ public class Application {
     }
 
     @Bean
-    ApplicationRunner applicationRunner(GreetingRepository greetingRepository){
+    ApplicationRunner applicationRunner(WordRepository wordRepository){
         return args -> {
-            greetingRepository.save(new Greeting("HELLO LOIS"));
-            greetingRepository.save(new Greeting("De test werkt"));
+            wordRepository.save(new Word("test"));
+            wordRepository.save(new Word("Effe checken"));
         };
     }
 
 }
 
-@RestController
-class HelloController {
-    private final GreetingRepository greetingRepository;
+//@RestController
+//class HelloController {
+//    private final GreetingRepository greetingRepository;
+//
+//    @GetMapping("/")
+//    String hello(){
+//        return "hello world";
+//    }
+//
+//    @GetMapping("/greetings")
+//    Iterable<Greeting> greetings(){
+//        return greetingRepository.findAll();
+//    }
+//
+//    HelloController(GreetingRepository greetingRepository){
+//        this.greetingRepository = greetingRepository;
+//    }
+//}
 
-    @GetMapping("/")
-    String hello(){
-        return "hello world";
-    }
+//@Entity
+//class Greeting {
+//    @Id
+//    @GeneratedValue
+//    private Long id;
+//
+//    @Column
+//    private String message;
+//
+//    public Greeting(){
+//
+//    }
+//
+//    public Greeting(String message){
+//        this.message = message;
+//    }
+//
+//    public Long getId(){
+//        return id;
+//    }
+//
+//    public String getMessage(){
+//        return message;
+//    }
+//
+//}
 
-    @GetMapping("/greetings")
-    Iterable<Greeting> greetings(){
-        return greetingRepository.findAll();
-    }
-
-    HelloController(GreetingRepository greetingRepository){
-        this.greetingRepository = greetingRepository;
-    }
-}
-
-@Entity
-class Greeting {
-    @Id
-    @GeneratedValue
-    private Long id;
-
-    @Column
-    private String message;
-
-    public Greeting(){
-
-    }
-
-    public Greeting(String message){
-        this.message = message;
-    }
-
-    public Long getId(){
-        return id;
-    }
-
-    public String getMessage(){
-        return message;
-    }
-
-}
-
-interface GreetingRepository extends CrudRepository<Greeting, Long>{}
+//interface GreetingRepository extends CrudRepository<Greeting, Long>{}
