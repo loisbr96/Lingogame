@@ -20,6 +20,8 @@ public class Application {
             wordRepository.save(new Word("eerste woord"));
             wordRepository.save(new Word("tweede woord"));
 
+
+
         };
     }
 }

@@ -2,6 +2,7 @@ package com.web.controller;
 
 import com.persistence.WordRepository;
 import com.persistence.model.Word;
+import com.services.WordService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -10,27 +11,26 @@ import java.util.Optional;
 @RestController
 public class WordController {
     private final WordRepository wordRepository;
-
-//    @Autowired
-//    private WordService wordService;
+    private final WordService wordService;
 
     @GetMapping("/")
     Iterable<Word> words(){
         return wordRepository.findAll();
     }
 
-    @RequestMapping("/id/{id}")
+    @GetMapping("/id/{id}")
     public @ResponseBody Optional<Word> getWordById(@PathVariable(value = "id") Long id){
         return wordRepository.findById(id);
     }
 
-//    @RequestMapping("/add/{word}")
-//    public @ResponseBody Word addWord(@PathVariable(value = "word") Word word){
-//        return wordRepository.save(word);
-//    }
+    @RequestMapping("/add/{word}")
+    public @ResponseBody Word addWord(@PathVariable(value = "word") String word){
+        return wordService.addWord(word);
+    }
 
-    WordController(WordRepository wordRepository){
+    WordController(WordRepository wordRepository, WordService wordService){
         this.wordRepository = wordRepository;
+        this.wordService = wordService;
     }
 }
 
