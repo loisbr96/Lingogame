@@ -1,5 +1,7 @@
 package com.persistence.model;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.*;
 
 @Entity
@@ -8,7 +10,8 @@ public class Word {
     @GeneratedValue
     private Long id;
 
-    @Column
+    @Column(nullable = false)
+    @Length(min = 5, max = 7)
     private String word;
 
     public Word(){}
