@@ -14,14 +14,4 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 
-    @Bean
-    ApplicationRunner applicationRunner(WordRepository wordRepository){
-        return args -> {
-            wordRepository.save(new Word("eerste woord"));
-            wordRepository.save(new Word("tweede woord"));
-
-
-
-        };
-    }
 }

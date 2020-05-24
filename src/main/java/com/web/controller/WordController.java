@@ -9,17 +9,19 @@ import java.util.Optional;
 
 
 @RestController
+@RequestMapping("/word")
 public class WordController {
     private final WordRepository wordRepository;
     private final WordService wordService;
 
-    @GetMapping("/")
-    Iterable<Word> words(){
+    @GetMapping("")
+    public @ResponseBody Iterable<Word> words(){
         return wordRepository.findAll();
     }
 
-    @GetMapping("/id/{id}")
+    @GetMapping("/{id}")
     public @ResponseBody Optional<Word> getWordById(@PathVariable(value = "id") Long id){
+        System.out.println(wordRepository.findById(id));
         return wordRepository.findById(id);
     }
 
