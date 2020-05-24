@@ -1,7 +1,6 @@
 package com.persistence.model;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 public class Word {
