@@ -14,16 +14,19 @@ public class Game {
     @Column
     private int score;
 
+    @Enumerated(EnumType.STRING)
+    @Column
+    private GameState state;
+
 
     @ManyToOne
     @JoinColumn(name = "wordId")
-    private  Word word;
+    private Word word;
+
+//    public Game() {
+//    }
 
     public Game() {
-    }
-
-    public Game(Word word) {
-        this.word = word;
     }
 
     public Long getId() {
@@ -46,9 +49,28 @@ public class Game {
         this.score = score;
     }
 
+    public void setRound(int round) {
+        this.round = round;
+    }
+
+    public void setWord(Word word) {
+        this.word = word;
+    }
+
     public Word getWord() {
         return word;
     }
 
+    public void won(){
+        this.state = GameState.WON;
+    }
+
+    public void lost(){
+        this.state = GameState.LOST;
+    }
+
+    public boolean hadEnded(){
+        return this.state.equals(GameState.LOST) || this.state.equals(GameState.WON);
+    }
 
 }
