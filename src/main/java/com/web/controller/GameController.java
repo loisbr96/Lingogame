@@ -5,7 +5,7 @@ import com.persistence.model.Game;
 import com.persistence.model.Word;
 import com.services.GameService;
 import com.services.WordService;
-import net.minidev.json.JSONObject;
+import net.minidev.json.JSONArray;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
@@ -21,20 +21,27 @@ public class GameController {
 
     private static Logger logger = LoggerFactory.getLogger(GameController.class);
 
+    @GetMapping("")
+    public @ResponseBody Iterable<Game> games(){
+        return gameRepository.findAll();
+    }
+
     @GetMapping("/new")
     public @ResponseBody Game newGame() throws Exception {
         return gameRepository.save(gameService.newGame());
     }
 
     @PostMapping("/run")
-    public JSONObject runGame(@RequestBody int gameId, @RequestBody String tryWord) throws Exception {
+    @ResponseBody
+    public JSONArray runGame(@RequestParam(name = "gameId") long gameId, @RequestParam(name = "tryWord") String tryWord) throws Exception {
         Word word = new Word(tryWord);
-        Long id = (long) gameId;
 
-        Optional<Game> gameOptional = gameRepository.findById(id);
+        Optional<Game> gameOptional = gameRepository.findById(gameId);
         if (!gameOptional.isPresent()) {
+            logger.error("Game not found");
             throw new Exception("Game not found");
         }
+
         Game game = gameOptional.get();
         gameService.runRound(game, word);
         return wordService.feedbackWord(game, word);

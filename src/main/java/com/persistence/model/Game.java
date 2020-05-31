@@ -27,15 +27,13 @@ public class Game {
 //    }
 
     public Game() {
+        this.state = GameState.PLAYING;
     }
 
     public Long getId() {
         return id;
     }
 
-    public Word getWord(int id) {
-        return word;
-    }
 
     public int getRound() {
         return round;
@@ -59,6 +57,10 @@ public class Game {
 
     public Word getWord() {
         return word;
+    }
+
+    public GameState getState() {
+        return state;
     }
 
     public void won(){

@@ -3,6 +3,7 @@ package com.services;
 import com.persistence.model.Game;
 import com.persistence.model.Word;
 import com.persistence.WordRepository;
+import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
 import org.springframework.stereotype.Service;
 
@@ -33,9 +34,9 @@ public class WordService{
         return word.get();
     }
 
-    public JSONObject feedbackWord(Game game, Word tryWord){
+    public JSONArray feedbackWord(Game game, Word tryWord){
         Word word = game.getWord();
-        JSONObject jsonObjectWord = new JSONObject();
+        JSONArray jsonArray = new JSONArray();
         for(int i = 0; i < tryWord.getWord().length(); i++){
             char c = tryWord.getWord().charAt(i);
 
@@ -50,9 +51,9 @@ public class WordService{
             } else {
                 jsonObjectChar.put("state", "wrong");
             }
-            jsonObjectWord.put("char", jsonObjectChar);
+            jsonArray.appendElement(jsonObjectChar);
         }
-        return jsonObjectWord;
+        return jsonArray;
     }
 
     WordService(WordRepository wordRepository){
