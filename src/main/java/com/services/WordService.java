@@ -30,7 +30,6 @@ public class WordService{
         if (!word.isPresent()) {
             throw new Exception("No word was found");
         }
-
         return word.get();
     }
 

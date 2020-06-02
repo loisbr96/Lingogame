@@ -41,7 +41,6 @@ public class GameService {
             game.setRound(game.getRound() + 1);
             gameRepository.save(game);
         }
-
         return tryWord.equals(game.getWord());
     }
 

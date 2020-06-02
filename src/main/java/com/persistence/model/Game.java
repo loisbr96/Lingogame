@@ -23,9 +23,6 @@ public class Game {
     @JoinColumn(name = "wordId")
     private Word word;
 
-//    public Game() {
-//    }
-
     public Game() {
         this.state = GameState.PLAYING;
     }
@@ -33,7 +30,6 @@ public class Game {
     public Long getId() {
         return id;
     }
-
 
     public int getRound() {
         return round;
