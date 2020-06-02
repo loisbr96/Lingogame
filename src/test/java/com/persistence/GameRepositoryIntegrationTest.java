@@ -1,6 +1,6 @@
 package com.persistence;
 
-
+import com.persistence.model.Game;
 import com.persistence.model.Word;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,45 +16,36 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
-public class WordRepositoryIntegrationTest {
+public class GameRepositoryIntegrationTest {
 
     @Autowired
     private TestEntityManager entityManager;
 
     @Autowired
-    private WordRepository wordRepository;
+    private GameRepository gameRepository;
 
     @Test
     public void findById(){
         //Given
-        Word word = new Word("testen");
-        entityManager.persist(word);
+
+        Game game = new Game();
+        entityManager.persist(game);
         entityManager.flush();
 
         //when
-        Optional<Word> found = wordRepository.findById(word.getId());
+        Optional<Game> found = gameRepository.findById(game.getId());
 
         //then
-        assertThat(found.get().getId()).isEqualTo(word.getId());
+        assertThat(found.get().getId()).isEqualTo(game.getId());
     }
 
     @Test
-    public void addCorrectWord(){
-        Word testWord = new Word("testen");
-        entityManager.persist(testWord);
+    public void addCorrectGame(){
+        Game game = new Game();
+        entityManager.persist(game);
         entityManager.flush();
 
-       assertThat(wordRepository.save(testWord));
+       assertThat(gameRepository.save(game));
     }
-
-//    @Test
-//    public void addIncorrectWord(){
-//        Word testWord = new Word("a-b-c-d");
-//        entityManager.persist(testWord);
-//        entityManager.flush();
-//
-//        assertThat(wordRepository.save(testWord)).
-//        return ;
-//    }
 
 }
