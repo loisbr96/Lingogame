@@ -24,13 +24,11 @@
 //    @Autowired
 //    private ScoreRepository scoreRepository;
 //
-//    @Autowired
-//    Game game;
 //
 //    @Test
 //    public void findById(){
 //        //Given
-//        Score score = new Score(game, "testUser");
+//        Score score = new Score(new Game(), "testUser");
 //        entityManager.persist(score);
 //        entityManager.flush();
 //

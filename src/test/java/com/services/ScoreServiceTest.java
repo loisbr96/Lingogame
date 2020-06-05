@@ -41,3 +41,6 @@
 ////        assertThat(scoreService.addScore(game.getId(),"testUser"));
 ////    }
 //}
+
+
+//Integration testen op basis van methodes

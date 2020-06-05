@@ -1,15 +1,18 @@
 package com;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class HttpRequestTest {
 
     @Autowired
@@ -17,7 +20,7 @@ public class HttpRequestTest {
 
     @Test
     public void greetingShouldReturnDefaultMessage() throws Exception {
-        assertThat(this.restTemplate.getForObject("https://lolingo.herokuapp.com/",
+        assertThat(this.restTemplate.getForObject("http://localhost:8080/",
                 String.class)).contains("Lolingo game");
     }
 }

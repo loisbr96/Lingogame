@@ -1,7 +1,7 @@
 package com.persistence;
 
-
 import com.persistence.model.Word;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,10 +9,12 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.validation.ConstraintViolationException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
-
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
@@ -23,6 +25,7 @@ public class WordRepositoryIntegrationTest {
 
     @Autowired
     private WordRepository wordRepository;
+
 
     @Test
     public void findById(){
@@ -37,24 +40,32 @@ public class WordRepositoryIntegrationTest {
         //then
         assertThat(found.get().getId()).isEqualTo(word.getId());
     }
-
     @Test
-    public void addCorrectWord(){
-        Word testWord = new Word("testen");
-        entityManager.persist(testWord);
-        entityManager.flush();
+    public void findAll(){
+        ArrayList<Word> words = new ArrayList<>();
 
-       assertThat(wordRepository.save(testWord));
+        words.add(new Word("testen"));
+        words.add(new Word("hallo"));
+        words.add(new Word("laptop"));
+        words.add(new Word("nogiets"));
+
+        for(Word word: words){
+            entityManager.persist(word);
+            entityManager.flush();
+        }
+        Iterable<Word> found = wordRepository.findAll();
+        List<Word> allWords = new ArrayList<>();
+        found.forEach(allWords::add);
+
+        assertThat(allWords.size() == 10);
     }
 
-//    @Test
-//    public void addIncorrectWord(){
-//        Word testWord = new Word("a-b-c-d");
-//        entityManager.persist(testWord);
-//        entityManager.flush();
-//
-//        assertThat(wordRepository.save(testWord)).
-//        return ;
-//    }
+    @Test(expected = ConstraintViolationException.class)
+    public void addIncorrectWord(){
+        Word testWord = new Word("testtesten");
+        entityManager.persist(testWord);
+        entityManager.flush();
+        assertThat(wordRepository.save(testWord));
+    }
 
 }
