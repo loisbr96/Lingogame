@@ -9,7 +9,7 @@ on:
 jobs:
 
   test:
-    name: Unit Test
+    name: Test
     runs-on: ubuntu-18.04
 
     steps:
@@ -25,5 +25,4 @@ jobs:
       - name: Maven Verify
         run: mvn -B clean verify
 
-      - name: Maven Test
-        run: mvn -B test
+
