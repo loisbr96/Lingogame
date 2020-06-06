@@ -8,12 +8,24 @@ import net.minidev.json.JSONObject;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Service
 public class WordService{
     private final WordRepository wordRepository;
 
-    public Word addWord(String wordString){
+    public Word addWord(String wordString) throws Exception{
+        Pattern pattern = Pattern.compile("[^a-z]");
+        Matcher matcher = pattern.matcher(wordString);
+        boolean find = matcher.find();
+        if(find){
+            throw new Exception("Er zijn geen speciale tekens of hoofdletters toegestaan");
+        }
+
+        if(wordString.length() < 5 || wordString.length() > 7){
+            throw new Exception("Het woord moet uit minimaal 5 en maximaal 7 letters bestaan");
+        }
         Word word = new Word(wordString);
         return wordRepository.save(word);
     }

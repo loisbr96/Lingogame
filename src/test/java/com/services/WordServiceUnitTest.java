@@ -11,7 +11,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-
 @SpringBootTest
 public class WordServiceUnitTest {
     private WordRepository wordRepository;
@@ -22,11 +21,35 @@ public class WordServiceUnitTest {
     }
 
     @Test
-    public void addWord(){
+    public void addWord() throws Exception {
         WordService wordService = new WordService(wordRepository);
 
         Word word = wordService.addWord("testen");
         assertThat(word.getWord()).isEqualTo("testen");
+    }
+
+    @Test(expected = Exception.class)
+    public void addSpecialWord() throws Exception{
+        WordService wordService = new WordService(wordRepository);
+
+        Word word = wordService.addWord("*sdf+r");
+        assertThat(word.getWord()).isEqualTo("*sdf+r");
+    }
+
+    @Test(expected = Exception.class)
+    public void addToLongWord() throws Exception{
+        WordService wordService = new WordService(wordRepository);
+
+        Word word = wordService.addWord("eenlangwoord");
+        assertThat(word.getWord()).isEqualTo("eenlangwoord");
+    }
+
+    @Test(expected = Exception.class)
+    public void addToShortWord() throws Exception{
+        WordService wordService = new WordService(wordRepository);
+
+        Word word = wordService.addWord("hoi");
+        assertThat(word.getWord()).isEqualTo("hoi");
     }
 
     @Test
@@ -103,7 +126,4 @@ public class WordServiceUnitTest {
         }
         assertThat(jsonArray).isEqualTo(wordService.feedbackWord(game, testWord));
     }
-
-
-
 }

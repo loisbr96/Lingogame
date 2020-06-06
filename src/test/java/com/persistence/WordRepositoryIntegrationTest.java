@@ -61,8 +61,24 @@ public class WordRepositoryIntegrationTest {
     }
 
     @Test(expected = ConstraintViolationException.class)
-    public void addIncorrectWord(){
+    public void addToLongWord(){
         Word testWord = new Word("testtesten");
+        entityManager.persist(testWord);
+        entityManager.flush();
+        assertThat(wordRepository.save(testWord));
+    }
+
+    @Test(expected = ConstraintViolationException.class)
+    public void addToShortWord(){
+        Word testWord = new Word("test");
+        entityManager.persist(testWord);
+        entityManager.flush();
+        assertThat(wordRepository.save(testWord));
+    }
+
+    @Test(expected = ConstraintViolationException.class)
+    public void addSpecialWord(){
+        Word testWord = new Word("te*s-t");
         entityManager.persist(testWord);
         entityManager.flush();
         assertThat(wordRepository.save(testWord));

@@ -5,7 +5,6 @@ import com.persistence.model.Word;
 import com.services.WordService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -31,15 +30,15 @@ public class WordController {
     }
 
     @RequestMapping("/add/{word}")
-    public @ResponseBody Word addWord(@PathVariable(value = "word") String word){
+    public @ResponseBody Word addWord(@PathVariable(value = "word") String word)throws Exception{
         return wordService.addWord(word);
     }
 
-    @ExceptionHandler(Exception.class)
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-        public void handleError(Exception exception){
-            logger.error(exception.getMessage());
-    }
+//    @ExceptionHandler(Exception.class)
+//    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+//        public void handleError(Exception exception){
+//            logger.error(exception.getMessage());
+//    }
 
     WordController(WordRepository wordRepository, WordService wordService){
         this.wordRepository = wordRepository;
