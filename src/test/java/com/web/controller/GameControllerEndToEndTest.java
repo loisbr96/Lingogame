@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.MediaType;
 import org.springframework.http.client.MultipartBodyBuilder;
 import org.springframework.http.client.reactive.ClientHttpRequest;
@@ -20,6 +21,7 @@ import org.springframework.web.reactive.function.BodyInserters;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
 /**
  * The end to end test can only be tested if the application is or by running all test together
@@ -27,14 +29,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(webEnvironment=RANDOM_PORT)
 public class GameControllerEndToEndTest {
 
     private WebTestClient client;
 
+    @LocalServerPort
+    private int port;
+
     @Before
     public void setUp(){
-        client = WebTestClient.bindToServer().baseUrl("http://localhost:8080").build();
+        client = WebTestClient.bindToServer().baseUrl("http://localhost:" + port).build();
     }
 
     @Test
