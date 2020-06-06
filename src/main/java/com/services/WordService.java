@@ -36,7 +36,7 @@ public class WordService{
 
     public Word getRandomWord() throws Exception {
         Iterable lengthIndex = wordRepository.findAll();
-        long size = lengthIndex.spliterator().getExactSizeIfKnown() ;
+        long size = lengthIndex.spliterator().getExactSizeIfKnown() -1 ;
         long generatedLong = size + (long) (Math.random() * (0 - size));
         Optional<Word> word = wordRepository.findById(generatedLong);
         if (!word.isPresent()) {

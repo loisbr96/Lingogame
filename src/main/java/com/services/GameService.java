@@ -14,8 +14,6 @@ public class GameService {
     public Game newGame() throws Exception {
         Game game = new Game();
         game.setWord(wordService.getRandomWord());
-
-        System.out.println(game);
         return game;
     }
 
@@ -33,7 +31,7 @@ public class GameService {
             game.setScore(120 - 20 * game.getRound() );
             gameRepository.save(game);
             throw new Exception("You have won the game");
-        }else if(!userWord.equals(gameWord) && game.getRound() == 5){
+        }else if(!userWord.equals(gameWord) && game.getRound() >= 5){
             game.lost();
             gameRepository.save(game);
             throw new Exception("You have lost the game");

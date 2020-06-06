@@ -38,7 +38,6 @@ public class GameController {
 
         Optional<Game> gameOptional = gameRepository.findById(gameId);
         if (!gameOptional.isPresent()) {
-            logger.error("Game not found");
             throw new Exception("Game not found");
         }
 

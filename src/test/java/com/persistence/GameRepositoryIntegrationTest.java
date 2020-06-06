@@ -41,13 +41,8 @@ public class GameRepositoryIntegrationTest {
     @Test
     public void findAll(){
         //Given
-        ArrayList<Game> games = new ArrayList<>();
-
         for(int i = 0; i < 11; i++){
-            games.add(new Game());
-        }
-
-        for(Game game : games){
+            Game game = new Game();
             entityManager.persist(game);
             entityManager.flush();
         }

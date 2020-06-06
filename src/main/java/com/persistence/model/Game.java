@@ -27,6 +27,10 @@ public class Game {
         this.state = GameState.PLAYING;
     }
 
+    /**
+     * Getters
+     */
+
     public Long getId() {
         return id;
     }
@@ -39,24 +43,33 @@ public class Game {
         return score;
     }
 
-    public void setScore(int score) {
-        this.score = score;
-    }
-
-    public void setRound(int round) {
-        this.round = round;
-    }
-
-    public void setWord(Word word) {
-        this.word = word;
-    }
-
     public Word getWord() {
         return word;
     }
 
     public GameState getState() {
         return state;
+    }
+
+    /**
+     * Setters
+     */
+
+    //Only for testing purposes
+    public void setId(Long id){
+        this.id = id;
+    }
+
+    public void setRound(int round) {
+        this.round = round;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public void setWord(Word word) {
+        this.word = word;
     }
 
     public void won(){
@@ -66,6 +79,10 @@ public class Game {
     public void lost(){
         this.state = GameState.LOST;
     }
+
+    /**
+     * Check if the game has ended
+     */
 
     public boolean hadEnded(){
         return this.state.equals(GameState.LOST) || this.state.equals(GameState.WON);

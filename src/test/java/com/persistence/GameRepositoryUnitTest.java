@@ -11,12 +11,40 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest
 public class GameRepositoryUnitTest {
 
+    /**
+     * Getters
+     */
+
     @Test
     public void getRounds(){
         Game game = new Game();
 
         assertThat(game.getRound() == 0);
     }
+
+    @Test
+    public void getScore(){
+        Game game = new Game();
+        assertThat(game.getScore() == 0);
+    }
+
+    @Test
+    public void getWord(){
+        Game game = new Game();
+        Word testWord = new Word("testen");
+        game.setWord(testWord);
+        assertThat(game.getWord()).isEqualTo(testWord);
+    }
+
+    @Test
+    public void getState(){
+        Game game = new Game();
+        assertThat(game.getState()).isEqualTo(GameState.PLAYING);
+    }
+
+    /**
+     * Setters
+     */
 
     @Test
     public void setRounds(){
@@ -26,9 +54,19 @@ public class GameRepositoryUnitTest {
     }
 
     @Test
-    public void getState(){
+    public void setScore(){
         Game game = new Game();
-        assertThat(game.getState()).isEqualTo(GameState.PLAYING);
+
+        game.setScore(100);
+        assertThat(game.getScore() == 100);
+    }
+
+    @Test
+    public void setWord(){
+        Game game = new Game();
+        Word testWord = new Word("testen");
+        game.setWord(testWord);
+        assertThat(game.getWord()).isEqualTo(testWord);
     }
 
     @Test
@@ -44,35 +82,4 @@ public class GameRepositoryUnitTest {
         game.lost();
         assertThat(game.getState()).isEqualTo(GameState.LOST);
     }
-
-    @Test
-    public void getScore(){
-        Game game = new Game();
-        assertThat(game.getScore() == 0);
-    }
-
-    @Test
-    public void setScore(){
-        Game game = new Game();
-
-        game.setScore(100);
-        assertThat(game.getScore() == 100);
-    }
-
-    @Test
-    public void getWord(){
-        Game game = new Game();
-        Word testWord = new Word("testen");
-        game.setWord(testWord);
-        assertThat(game.getWord()).isEqualTo(testWord);
-    }
-
-    @Test
-    public void setWord(){
-        Game game = new Game();
-        Word testWord = new Word("testen");
-        game.setWord(testWord);
-        assertThat(game.getWord()).isEqualTo(testWord);
-    }
-
 }

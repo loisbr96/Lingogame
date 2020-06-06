@@ -55,9 +55,7 @@ public class WordServiceUnitTest {
     @Test
     public void getRandomWord() throws Exception {
         WordService wordService = new WordService(wordRepository);
-        Word word = wordService.getRandomWord();
-        assert(true);
-        //You can reach this point when no exception has been thrown
+        assertThat(wordService.getRandomWord()).isOfAnyClassIn(Word.class);
     }
 
     @Test

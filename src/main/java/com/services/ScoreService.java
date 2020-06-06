@@ -15,6 +15,7 @@ import java.util.Optional;
 public class ScoreService {
     private final ScoreRepository scoreRepository;
     private final GameRepository gameRepository;
+
     private static Logger logger = LoggerFactory.getLogger(ScoreService.class);
 
     public Score addScore(long gameId, String username) throws Exception{

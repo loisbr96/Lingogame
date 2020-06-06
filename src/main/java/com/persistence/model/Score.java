@@ -1,6 +1,5 @@
 package com.persistence.model;
 
-
 import javax.persistence.*;
 
 @Entity
@@ -24,12 +23,12 @@ public class Score {
         this.name = name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    /**
+     * Getters
+     */
 
-    public void setGame(Game game) {
-        this.game = game;
+    public Long getId() {
+        return id;
     }
 
     public String getName() {
@@ -38,5 +37,17 @@ public class Score {
 
     public Game getGame() {
         return game;
+    }
+
+    /**
+     * Setters
+     */
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
     }
 }

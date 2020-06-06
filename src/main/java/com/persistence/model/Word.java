@@ -22,6 +22,10 @@ public class Word {
         this.word = word;
     }
 
+    /**
+     * Getters
+     */
+
     public Long getId() {
         return id;
     }
@@ -29,6 +33,10 @@ public class Word {
     public String getWord() {
         return word;
     }
+
+    /**
+     * Setters
+     */
 
     public void setWord(String word) {
         this.word = word;
