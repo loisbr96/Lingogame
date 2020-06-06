@@ -26,4 +26,4 @@ jobs:
         run: mvn -B clean verify
 
       - name: Maven Test
-        run: mvn -B test
+        run: mvn test
