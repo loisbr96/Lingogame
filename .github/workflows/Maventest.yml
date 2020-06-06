@@ -25,3 +25,6 @@ jobs:
       - name: Maven Verify
         run: mvn -B clean verify
 
+      - name: Maven Test
+        run: mvn test
+
