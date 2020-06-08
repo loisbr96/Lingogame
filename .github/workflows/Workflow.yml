@@ -29,11 +29,11 @@ jobs:
     name: Codecov
     runs-on: ubuntu-18.04
 
-      steps:
-        - uses: actions/checkout@v1
+    steps:
+      - uses: actions/checkout@v1
 
-        - name: codecov reports
-          run: bash <(curl -s https://codecov.io/bash) -t ${{ secrets.CODECOV_TOKEN }}
+      - name: codecov reports
+        run: bash <(curl -s https://codecov.io/bash) -t ${{ secrets.CODECOV_TOKEN }}
 
 
 
