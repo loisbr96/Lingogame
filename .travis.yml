@@ -1,8 +1,0 @@
-#language: java
-#
-#env:
-#  global:
-#    - CODECOV_TOKEN=${{ secrets.CODECOV_TOKEN }}
-#
-#after_success:
-#  - bash <(curl -s https://codecov.io/bash)
