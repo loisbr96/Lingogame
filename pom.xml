@@ -48,6 +48,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.vaadin.external.google</groupId>
+                    <artifactId>android-json</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -155,9 +161,6 @@
                             </limits>
                         </rule>
                     </rules>
-                    <excludes>
-                        <exclude>**/**/**/**/Application.class</exclude>
-                    </excludes>
                 </configuration>
             </plugin>
 
@@ -203,9 +206,6 @@
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>3.0.0-M4</version>
                     <configuration>
-                        <excludes>
-                            <exclude>**/**/**/**/Application.java</exclude>
-                        </excludes>
                     </configuration>
                 </plugin>
                 <plugin>

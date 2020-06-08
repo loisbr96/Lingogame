@@ -11,10 +11,6 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
-/**
- * The end to end test can only be tested if the application is or by running all test together
- */
-
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment=RANDOM_PORT)
 public class WordControllerEndToEndTest {

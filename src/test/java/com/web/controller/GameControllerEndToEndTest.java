@@ -23,9 +23,6 @@ import java.util.Map;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
-/**
- * The end to end test can only be tested if the application is or by running all test together
- */
 
 
 @RunWith(SpringRunner.class)

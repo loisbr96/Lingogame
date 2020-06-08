@@ -10,35 +10,9 @@
     <link rel="stylesheet" href="../css/shards.min.css">
 </head>
 <body>
-<div th:switch="${words}" class="container my-5">
+<div  class="container my-5">
     <h1>Welkom bij de Lolingo app!</H1>
-    <div class="row">
-        <div class="col-md-6">
-            <h2 th:case="null">No words yet!</h2>
-            <div th:case="*">
-                <h2 class="my-5">Words</h2>
-                <table class="table table-striped table-responsive-md">
-                    <thead>
-                    <tr>
-                        <th>id</th>
-                        <th>Word</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr th:each="user : ${words}">
-                        <td th:text="${words.id}"></td>
-                        <td th:text="${words.word}"></td>
-<!--                        <td><a th:href="@{/edit/{id}(id=${user.id})}" class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a></td>-->
-<!--                        <td><a th:href="@{/delete/{id}(id=${user.id})}" class="btn btn-primary"><i class="fas fa-user-times ml-2"></i></a></td>-->
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-<!--            <p class="my-5"><a href="/signup" class="btn btn-primary"><i class="fas fa-user-plus ml-2"></i></a></p>-->
-        </div>
-    </div>
+
 </div>
 </body>
 </html>

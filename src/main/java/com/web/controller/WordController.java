@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
-
 @RestController
 @RequestMapping("/word")
 public class WordController {
@@ -33,12 +32,6 @@ public class WordController {
     public @ResponseBody Word addWord(@PathVariable(value = "word") String word)throws Exception{
         return wordService.addWord(word);
     }
-
-//    @ExceptionHandler(Exception.class)
-//    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-//        public void handleError(Exception exception){
-//            logger.error(exception.getMessage());
-//    }
 
     WordController(WordRepository wordRepository, WordService wordService){
         this.wordRepository = wordRepository;
