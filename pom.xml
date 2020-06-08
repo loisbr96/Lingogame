@@ -150,11 +150,14 @@
                                 <limit>
                                     <counter>BRANCH</counter>
                                     <value>COVEREDRATIO</value>
-                                    <minimum>5%</minimum>
+                                    <minimum>70%</minimum>
                                 </limit>
                             </limits>
                         </rule>
                     </rules>
+                    <excludes>
+                        <exclude>**/**/**/**/Application.class</exclude>
+                    </excludes>
                 </configuration>
             </plugin>
 
@@ -199,6 +202,11 @@
                 <plugin>
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>3.0.0-M4</version>
+                    <configuration>
+                        <excludes>
+                            <exclude>**/**/**/**/Application.java</exclude>
+                        </excludes>
+                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.sonarsource.scanner.maven</groupId>

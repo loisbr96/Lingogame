@@ -47,6 +47,13 @@ public class GameRepositoryUnitTest {
      */
 
     @Test
+    public void setId(){
+        Game game = new Game();
+        game.setId((long) 1);
+        assertThat(game.getId() == (long) 1);
+    }
+
+    @Test
     public void setRounds(){
         Game game = new Game();
         game.setRound(game.getRound() +1 );
