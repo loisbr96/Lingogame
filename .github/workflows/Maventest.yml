@@ -25,11 +25,10 @@ jobs:
       - name: Maven Verify
         run: mvn -B clean verify
 
-      - name: Springboot test
-        run: mvn spring-boot-test:run
+  codecov:
+    name: CodeCo
+    runs-on: ubuntu-18.04
 
+    steps:
       - name: Codecov
         run: bash <(curl -s https://codecov.io/bash) -t ${{ secrets.CODECOV_TOKEN }}
-
-
-
