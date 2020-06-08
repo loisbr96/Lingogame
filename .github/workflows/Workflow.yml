@@ -25,16 +25,8 @@ jobs:
       - name: Maven Verify
         run: mvn -B clean verify
 
-  codecov:
-    name: Codecov
-    runs-on: ubuntu-18.04
+      - name: Maven Test
+        run: mvn test
 
-    steps:
-      - uses: actions/checkout@v1
-
-      - name: codecov reports
+      - name: Codecov
         run: bash <(curl -s https://codecov.io/bash) -t ${{ secrets.CODECOV_TOKEN }}
-
-
-
-
