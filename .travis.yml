@@ -1,6 +1,8 @@
 language: java
 
-script: "mvn cobertura:cobertura"
+env:
+  global:
+    - CODECOV_TOKEN=${{ secrets.CODECOV_TOKEN }}
 
 after_success:
-  - bash <(curl -s https://codecov.io/bash) -t uuid-repo-token
+  - bash <(curl -s https://codecov.io/bash)
