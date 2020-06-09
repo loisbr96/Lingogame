@@ -6,8 +6,8 @@ import com.persistence.model.Word;
 import com.services.GameService;
 import com.services.WordService;
 import net.minidev.json.JSONArray;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -19,7 +19,7 @@ public class GameController {
     private final GameService gameService;
     private final WordService wordService;
 
-    private static Logger logger = LoggerFactory.getLogger(GameController.class);
+//    private static Logger logger = LoggerFactory.getLogger(GameController.class);
 
     @GetMapping("")
     public @ResponseBody Iterable<Game> games(){

@@ -3,8 +3,8 @@ package com.web.controller;
 import com.persistence.WordRepository;
 import com.persistence.model.Word;
 import com.services.WordService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -15,7 +15,7 @@ public class WordController {
     private final WordRepository wordRepository;
     private final WordService wordService;
 
-    private static Logger logger = LoggerFactory.getLogger(WordController.class);
+//    private static Logger logger = LoggerFactory.getLogger(WordController.class);
 
     @GetMapping("")
     public @ResponseBody Iterable<Word> words(){

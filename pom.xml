@@ -33,9 +33,6 @@
         <java.version>1.8</java.version>
         <start-class>com.Application</start-class>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-        <sonar.organization>loibr96</sonar.organization>
-        <sonar.projectKey>loisbr96_cc-example</sonar.projectKey>
     </properties>
 
     <dependencies>
@@ -110,6 +107,13 @@
             <artifactId>json</artifactId>
             <version>20180130</version>
         </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.module</groupId>
+            <artifactId>jackson-modules-java8</artifactId>
+            <version>2.9.8</version>
+            <type>pom</type>
+            <scope>runtime</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -168,6 +172,16 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>
                 <version>3.13.0</version>
+                <configuration>
+                    <printFailingErrors>true</printFailingErrors>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
 
             <plugin>
@@ -182,36 +196,20 @@
                 <version>3.9.0</version>
             </plugin>
 
-            <plugin>
-                <groupId>org.pitest</groupId>
-                <artifactId>pitest-maven</artifactId>
-                <version>1.5.0</version>
-                <configuration>
-                    <timestampedReports>false</timestampedReports>
-                    <mutationThreshold>90</mutationThreshold>
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.pitest</groupId>
-                        <artifactId>pitest-junit5-plugin</artifactId>
-                        <version>0.12</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
         </plugins>
 
         <pluginManagement>
             <plugins>
                 <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-pmd-plugin</artifactId>
+                    <version>3.13.0</version>
+                </plugin>
+                <plugin>
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>3.0.0-M4</version>
                     <configuration>
                     </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.sonarsource.scanner.maven</groupId>
-                    <artifactId>sonar-maven-plugin</artifactId>
-                    <version>3.7.0.1746</version>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -221,11 +219,18 @@
     <reporting>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>3.13.0</version>
+            </plugin>
+
+            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>jdepend-maven-plugin</artifactId>
                 <version>2.0</version>
             </plugin>
         </plugins>
     </reporting>
+
 
 </project>
