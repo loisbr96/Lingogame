@@ -6,10 +6,15 @@ import com.persistence.model.Game;
 import com.persistence.model.GameState;
 import com.persistence.model.Score;
 import com.persistence.model.Word;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.ApplicationContext;
 
 import java.util.Optional;
 
