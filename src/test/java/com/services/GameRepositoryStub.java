@@ -16,6 +16,7 @@ public class GameRepositoryStub implements GameRepository {
         for(int i = 0; i <4; i++){
             Word word = new Word("testen");
             Game game = new Game();
+            game.setId((long)i +1 );
             game.setWord(word);
             gameArrayList.add(game);
         }
@@ -28,7 +29,8 @@ public class GameRepositoryStub implements GameRepository {
 
     @Override
     public <S extends Game> S save(S s) {
-        return null;
+        gameArrayList.add(s);
+        return s;
     }
 
     @Override

@@ -13,23 +13,22 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class GameServiceUnitTest {
     private GameRepository gameRepository;
     private WordService wordService;
-    private WordRepositoryStub wordRepositoryStub;
 
     @Before
     public void setUp(){
         this.gameRepository = new GameRepositoryStub();
-        this.wordService = new WordService(wordRepositoryStub);
+        this.wordService = new WordService(new WordRepositoryStub());
     }
 
-//    @Test
-//    public void newGame() throws Exception{
-//        GameService gameService = new GameService(gameRepository, wordService);
-//
-//        Game game = gameService.newGame();
-//        assertThat(game).isOfAnyClassIn(Game.class);
-//    }
+    @Test
+    public void newGame() throws Exception{
+        GameService gameService = new GameService(gameRepository, wordService);
 
-    @Test(expected = Exception.class)
+        Game game = gameService.newGame();
+        assertThat(game).isOfAnyClassIn(Game.class);
+    }
+
+    @Test
     public void runRoundCorrectWord() throws Exception{
         GameService gameService = new GameService(gameRepository, wordService);
         Game game = new Game();

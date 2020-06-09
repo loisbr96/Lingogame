@@ -131,6 +131,15 @@
                 <version>3.1</version>
             </plugin>
 
+<!--            <plugin>-->
+<!--                <groupId>com.ripstech</groupId>-->
+<!--                <artifactId>rips-maven-plugin</artifactId>-->
+<!--                <version>1.0.0</version>-->
+<!--&lt;!&ndash;                <configuration>&ndash;&gt;-->
+<!--&lt;!&ndash;                    ...&ndash;&gt;-->
+<!--&lt;!&ndash;                </configuration>&ndash;&gt;-->
+<!--            </plugin>-->
+
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>

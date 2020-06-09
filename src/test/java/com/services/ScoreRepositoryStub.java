@@ -25,7 +25,8 @@ public class ScoreRepositoryStub implements ScoreRepository {
 
     @Override
     public <S extends Score> S save(S s) {
-        return null;
+        scoreArrayList.add(s);
+        return s;
     }
 
     @Override

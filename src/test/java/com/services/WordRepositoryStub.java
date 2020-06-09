@@ -28,6 +28,7 @@ public class WordRepositoryStub implements WordRepository {
 
     @Override
     public <S extends Word> S save(S s) {
+        wordArrayList.add(s);
         return s;
     }
 

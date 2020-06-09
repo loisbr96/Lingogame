@@ -30,7 +30,7 @@ public class GameService {
             game.setRound(game.getRound());
             game.setScore(120 - 20 * game.getRound() );
             gameRepository.save(game);
-            throw new Exception("You have won the game");
+            return true;
         }else if(!userWord.equals(gameWord) && game.getRound() >= 5){
             game.lost();
             gameRepository.save(game);
