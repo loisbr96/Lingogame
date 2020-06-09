@@ -29,8 +29,7 @@ jobs:
         run: bash <(curl -s https://codecov.io/bash) -t ${{ secrets.CODECOV_TOKEN }}
 
       - name: PMD
-        run: - name: run-pmd
-                 run: ./run.sh pmd -d src/main/java -f text -R rulesets/java/quickstart.xml -language java -version 8
+        run: ./run.sh pmd -d src/main/java -f text -R rulesets/java/quickstart.xml -language java -version 8
 
   pmd:
     name: PMD
