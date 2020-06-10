@@ -5,8 +5,10 @@ import com.persistence.ScoreRepository;
 import com.persistence.model.Game;
 import com.persistence.model.GameState;
 import com.persistence.model.Score;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -17,6 +19,11 @@ public class ScoreService {
     private final GameRepository gameRepository;
 
     private static Logger logger = LoggerFactory.getLogger(ScoreService.class);
+
+    ScoreService(ScoreRepository scoreRepository, GameRepository gameRepository){
+        this.gameRepository = gameRepository;
+        this.scoreRepository = scoreRepository;
+    }
 
     public Score addScore(long gameId, String username) throws Exception{
         Optional<Game> gameOptional = gameRepository.findById(gameId);
@@ -39,11 +46,5 @@ public class ScoreService {
         } else{
             throw new Exception("Only winning games can be on the scoreboard");
         }
-
-    }
-
-    ScoreService(ScoreRepository scoreRepository, GameRepository gameRepository){
-        this.gameRepository = gameRepository;
-        this.scoreRepository = scoreRepository;
     }
 }

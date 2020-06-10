@@ -6,8 +6,6 @@ import com.persistence.model.Word;
 import com.services.GameService;
 import com.services.WordService;
 import net.minidev.json.JSONArray;
-//import org.slf4j.Logger;
-//import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -19,7 +17,11 @@ public class GameController {
     private final GameService gameService;
     private final WordService wordService;
 
-//    private static Logger logger = LoggerFactory.getLogger(GameController.class);
+    GameController(GameRepository gameRepository, GameService gameService, WordService wordService){
+        this.gameRepository = gameRepository;
+        this.gameService = gameService;
+        this.wordService = wordService;
+    }
 
     @GetMapping("")
     public @ResponseBody Iterable<Game> games(){
@@ -44,11 +46,5 @@ public class GameController {
         Game game = gameOptional.get();
         gameService.runRound(game, word);
         return wordService.feedbackWord(game, word);
-    }
-
-    GameController(GameRepository gameRepository, GameService gameService, WordService wordService){
-        this.gameRepository = gameRepository;
-        this.gameService = gameService;
-        this.wordService = wordService;
     }
 }

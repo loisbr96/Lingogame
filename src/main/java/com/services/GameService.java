@@ -3,13 +3,23 @@ package com.services;
 import com.persistence.GameRepository;
 import com.persistence.model.Game;
 import com.persistence.model.Word;
-import org.springframework.stereotype.Service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import org.springframework.stereotype.Service;
 
 @Service
 public class GameService {
     private final GameRepository gameRepository;
     private final WordService wordService;
+
+    private static Logger logger = LoggerFactory.getLogger(GameService.class);
+
+    GameService(GameRepository gameRepository, WordService wordService){
+        this.gameRepository = gameRepository;
+        this.wordService = wordService;
+    }
 
     public Game newGame() throws Exception {
         Game game = new Game();
@@ -17,36 +27,33 @@ public class GameService {
         return game;
     }
 
-    public boolean runRound(Game game, Word tryWord) throws Exception {
+    public boolean runRound(Game game, Word tryWord){
         String userWord = tryWord.getWord();
         String gameWord = game.getWord().getWord();
         if(gameWord.length() != userWord.length()){
-            throw new Exception("The word has " + gameWord.length() + " letters. Try again");
+            logger.info(String.format("The word has %s letters", gameWord.length()));
+            game.setRound(game.getRound() +1);
+            return false;
         }
         if(game.hadEnded()){
-            throw new Exception("The game has ended");
+            logger.error("ENDED! The game has already ended.");
+            return false;
         }else if(userWord.equals(game.getWord().getWord())){
             game.won();
             game.setRound(game.getRound());
             game.setScore(120 - 20 * game.getRound() );
             gameRepository.save(game);
+            logger.info("WON!! The state of the game is changed into WON");
             return true;
         }else if(!userWord.equals(gameWord) && game.getRound() >= 5){
             game.lost();
             gameRepository.save(game);
-            throw new Exception("You have lost the game");
+            logger.error("LOST!! The state of the game is changed into LOST");
+            return false;
         }else {
             game.setRound(game.getRound() + 1);
             gameRepository.save(game);
         }
         return tryWord.equals(game.getWord());
     }
-
-    GameService(GameRepository gameRepository, WordService wordService){
-        this.gameRepository = gameRepository;
-        this.wordService = wordService;
-    }
-
-
-
 }

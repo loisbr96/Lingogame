@@ -2,7 +2,7 @@
 An application to practise the lingo game.
 Devloped by loisbr96
 
-![Build](https://github.com/loisbr96/Lingogame/workflows/Workflow/badge.svg)
+![Build](https://github.com/loisbr96/Lingogame/workflows/Workflow/badge.svg) [![codecov](https://codecov.io/gh/loisbr96/Lingogame/branch/master/graph/badge.svg?token=QPSXGH19M9)](https://codecov.io/gh/loisbr96/Lingogame) 
 
 # Lolingo !
 
@@ -28,7 +28,6 @@ Er is gebruik gemaakt van Springboottest. Deze heeft speciaal voor de repository
 
 
 ## Coverage en mutation testen
-[![codecov](https://codecov.io/gh/loisbr96/Lingogame/branch/master/graph/badge.svg?token=QPSXGH19M9)](https://codecov.io/gh/loisbr96/Lingogame) <br>
 CodeCov controleert via de **build** standaard de code kwaliteit. Via Codecov is de **badge** beschikbaar in deze README. Er is een coverage van hoger dan 75%. 
 
 
@@ -37,16 +36,38 @@ Er is gebruik gemaakt van Springboot. Daarnaast is er een package structuur van 
 
 ## Mate van netheid
 Er is gebruik gemaakt van van de Clean code principles. De namen van methodes en variabelen zijn verklaarbaar. Input wordt bij de methodes gevalideerd en er wordt een exceptie gegooid wanneer de validatie niet goed was. 
-SonarLint gebruikt
+SonarLint gebruikt als plugin in Intelij omdat SonarCloud(zoals het voorbeeld van Alex Rothuis) betaald is voor private repository's.
 
 ## Static analysis tools
-PMD  en Jdepend via Maven verify
+PMD en Jdepend zijn toegepast in het project. Via Maven verify wordt er gecontroleerd/geanalyseerd en een rapportage gegenereerd.
 
 ## Perfomance en security analysis
-Dependency-check-maven inbuild via maven site en Sonarlint via Intelij
+Dependency-check-maven is gebruikt om alle zwakheden in de applicatie te vinden. Deze wordt aangeroepen in de build via maven site. Daarna wordt een rapport gegenereerd. Deze is de vinden in de lokale repository.
+Sonarlint is de plugin geinstaleerd voor intelij, die vind en repareert kwaliteits issues die ook invloed hebben op security en performance. 
 
 ## Deployment
-Op Heroku. Daar wordt het via Liberato en Papertrail gemonitord. (beperkte ivm gratis versies)
+De applicatie wordt automatisch gedeployd op Heroku zodra de pipeline is geslaagd. Op heroku zijn 2 addons die de applicatie observeren: Liberato en Papertrail.
+Beide zijn beperkt in geheugen in verband met gratis versies. Liberato monitort de performance van de applicatie en laat dit zien via een dashboard. Papertrail laat alle logging zien van de applicatie.
 
 ## Creatieve ruimte
 Geen bewuste extra inspanning gedaan. Overnagedacht om Thymeleaves te gebruiken, maar uiteindelijk gekozen alleen een welkomspagina te doen.  
+
+## Bronvermelding
+Bronvermelding is aangegeven in de pom.xml. Er is geen code een op een overgenomen, meer gewerkt aan de hand van tutorials/voorbeelden.
+
+## Endpoints
+Hieronder een overzicht voor de endpoints
+  
+| Endpoint |  Actie|
+|---------|--------|
+| `/word` |  verkrijg alle woorden|
+| `/word/{id}` |Verkrijg het woord met dit ID|
+|`/word/add/{word}`|Voeg een woord toe |
+| `/word` |  verkrijg alle woorden|
+|`/game`|Verkrijg alle games|
+| `/game/new` |  Maak een nieuwe game aan|
+| `/game/run` |  Speel het spel d.m.v. een `GameId` en `tryWord` |
+| `/score` |  Verkrijg het scoreboard|
+| `/score/new` |  Maak een nieuwe score aan|
+
+

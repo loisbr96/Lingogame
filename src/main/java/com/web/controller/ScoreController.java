@@ -11,6 +11,11 @@ public class ScoreController {
     private final ScoreRepository scoreRepository;
     private final ScoreService scoreService;
 
+    ScoreController(ScoreRepository scoreRepository, ScoreService scoreService){
+        this.scoreRepository = scoreRepository;
+        this.scoreService = scoreService;
+    }
+
     @GetMapping("")
     public @ResponseBody Iterable<Score> scores(){
         return scoreRepository.findAll();
@@ -22,8 +27,5 @@ public class ScoreController {
         return scoreService.addScore(gameId, username);
     }
 
-    ScoreController(ScoreRepository scoreRepository, ScoreService scoreService){
-        this.scoreRepository = scoreRepository;
-        this.scoreService = scoreService;
-    }
+
 }

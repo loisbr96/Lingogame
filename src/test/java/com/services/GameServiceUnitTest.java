@@ -29,7 +29,7 @@ public class GameServiceUnitTest {
     }
 
     @Test
-    public void runRoundCorrectWord() throws Exception{
+    public void runRoundCorrectWord() {
         GameService gameService = new GameService(gameRepository, wordService);
         Game game = new Game();
         game.setWord(new Word("testen"));
@@ -38,7 +38,7 @@ public class GameServiceUnitTest {
     }
 
     @Test
-    public void runRoundIncorrectWord() throws Exception{
+    public void runRoundIncorrectWord() {
         GameService gameService = new GameService(gameRepository, wordService);
         Game game = new Game();
         game.setWord(new Word("testen"));
@@ -46,52 +46,52 @@ public class GameServiceUnitTest {
         assertThat(gameService.runRound(game, new Word("eerste"))).isFalse();
     }
 
-    @Test(expected = Exception.class)
-    public void runRoundLongWord() throws Exception{
+    @Test
+    public void runRoundLongWord() {
         GameService gameService = new GameService(gameRepository, wordService);
         Game game = new Game();
         game.setWord(new Word("testen"));
 
-        gameService.runRound(game, new Word("abracadaba"));
+        assertThat(gameService.runRound(game, new Word("abracadaba"))).isFalse();
     }
 
-    @Test(expected = Exception.class)
-    public void runRoundShortWord() throws Exception{
+    @Test
+    public void runRoundShortWord(){
         GameService gameService = new GameService(gameRepository, wordService);
         Game game = new Game();
         game.setWord(new Word("testen"));
 
-        gameService.runRound(game, new Word("test"));
+        assertThat(gameService.runRound(game, new Word("test"))).isFalse();
     }
 
-    @Test(expected = Exception.class)
-    public void runRoundLostGame() throws Exception{
+    @Test
+    public void runRoundLostGame(){
         GameService gameService = new GameService(gameRepository, wordService);
         Game game = new Game();
         game.setWord(new Word("testen"));
         game.lost();
 
-        gameService.runRound(game, new Word("laptop"));
+        assertThat(gameService.runRound(game, new Word("laptop"))).isFalse();
     }
 
-    @Test(expected = Exception.class)
-    public void runRoundWonGame() throws Exception{
+    @Test
+    public void runRoundWonGame() {
         GameService gameService = new GameService(gameRepository, wordService);
         Game game = new Game();
         game.setWord(new Word("testen"));
         game.won();
 
-        gameService.runRound(game, new Word("laptop"));
+        assertThat(gameService.runRound(game, new Word("laptop"))).isFalse();
     }
 
-    @Test(expected = Exception.class)
-    public void runRoundToMany() throws Exception{
+    @Test
+    public void runRoundToMany(){
         GameService gameService = new GameService(gameRepository, wordService);
         Game game = new Game();
         game.setWord(new Word("testen"));
         game.setRound(6);
 
-        gameService.runRound(game, new Word("laptop"));
+        assertThat(gameService.runRound(game, new Word("laptop"))).isFalse();
     }
 
 }

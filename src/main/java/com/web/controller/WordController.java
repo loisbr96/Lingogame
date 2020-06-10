@@ -3,8 +3,6 @@ package com.web.controller;
 import com.persistence.WordRepository;
 import com.persistence.model.Word;
 import com.services.WordService;
-//import org.slf4j.Logger;
-//import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -15,7 +13,10 @@ public class WordController {
     private final WordRepository wordRepository;
     private final WordService wordService;
 
-//    private static Logger logger = LoggerFactory.getLogger(WordController.class);
+    WordController(WordRepository wordRepository, WordService wordService){
+        this.wordRepository = wordRepository;
+        this.wordService = wordService;
+    }
 
     @GetMapping("")
     public @ResponseBody Iterable<Word> words(){
@@ -31,11 +32,6 @@ public class WordController {
     @RequestMapping("/add/{word}")
     public @ResponseBody Word addWord(@PathVariable(value = "word") String word)throws Exception{
         return wordService.addWord(word);
-    }
-
-    WordController(WordRepository wordRepository, WordService wordService){
-        this.wordRepository = wordRepository;
-        this.wordService = wordService;
     }
 }
 

@@ -4,12 +4,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <!-- https://spring.io/guides/gs/spring-boot/ -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.2.6.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
+    <!-- https://www.baeldung.com/spring-profiles -->
     <profiles>
         <profile>
             <id>dev</id>
@@ -40,6 +42,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <!-- https://www.baeldung.com/spring-boot-testing -->
         <dependency>
             <!--Spring Framework-->
             <groupId>org.springframework.boot</groupId>
@@ -62,15 +65,18 @@
             <artifactId>spring-web</artifactId>
             <version>5.2.5.RELEASE</version>
         </dependency>
+        <!-- https://spring.io/guides/gs/serving-web-content/ -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
             <version>5.2.2.RELEASE</version>
         </dependency>
+        <!-- https://spring.io/guides/gs/serving-web-content/ -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
+        <!-- https://spring.io/guides/gs/accessing-data-jpa/ -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -86,6 +92,7 @@
             <scope>runtime</scope>
         </dependency>
         <!--Testing-->
+        <!-- https://www.baeldung.com/spring-boot-testing -->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
@@ -119,24 +126,22 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
 
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.1</version>
             </plugin>
-
+            <!-- https://jeremylong.github.io/DependencyCheck/dependency-check-maven/index.html -->
             <plugin>
                 <groupId>org.owasp</groupId>
                 <artifactId>dependency-check-maven</artifactId>
                 <version>5.3.0</version>
             </plugin>
-
+            <!-- https://github.com/arothuis-hu/cc-example -->
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.5</version>
-
                 <executions>
                     <execution>
                         <id>pre-test</id>
@@ -161,14 +166,15 @@
                                 <limit>
                                     <counter>BRANCH</counter>
                                     <value>COVEREDRATIO</value>
-                                    <minimum>70%</minimum>
+                                    <minimum>75%</minimum>
                                 </limit>
                             </limits>
                         </rule>
                     </rules>
                 </configuration>
             </plugin>
-
+            <!-- https://github.com/arothuis-hu/cc-example -->
+            <!-- https://mkyong.com/maven/maven-pmd-example/-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>
@@ -245,6 +251,5 @@
             </plugin>
         </plugins>
     </reporting>
-
 
 </project>
