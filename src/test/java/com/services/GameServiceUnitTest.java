@@ -5,11 +5,9 @@ import com.persistence.model.Game;
 import com.persistence.model.Word;
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@SpringBootTest
 public class GameServiceUnitTest {
     private GameRepository gameRepository;
     private WordService wordService;

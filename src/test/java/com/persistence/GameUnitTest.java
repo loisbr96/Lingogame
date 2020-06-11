@@ -4,11 +4,9 @@ import com.persistence.model.Game;
 import com.persistence.model.GameState;
 import com.persistence.model.Word;
 import org.junit.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@SpringBootTest
 public class GameUnitTest {
 
     /**
