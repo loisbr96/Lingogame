@@ -66,8 +66,8 @@ Hieronder een overzicht voor de endpoints
 | `/word` |  verkrijg alle woorden|
 |`/game`|Verkrijg alle games|
 | `/game/new` |  Maak een nieuwe game aan|
-| `/game/run` |  Speel het spel d.m.v. een `GameId` en `tryWord` |
+| `/game/run` |  Speel het spel d.m.v. een `gameId` en `tryWord` |
 | `/score` |  Verkrijg het scoreboard|
-| `/score/new` |  Maak een nieuwe score aan|
+| `/score/new` |  Maak een nieuwe score aan met een `gameId` en een `username`|
 
 
