@@ -24,6 +24,7 @@ Hieronder een overzicht voor de endpoints
 | `/score/new` |  Maak een nieuwe score aan met een `gameId` en een `username`|
 
 #Beoordeling
+
 ## Build tools en pipeline
 De applicatie gebruikt de **build tool** Maven. Daarnaast is er op Github Action een workflow aangemaakt die zorgt dat er een **pipeline** draait als er naar master wordt gepusht. **Heroku** deployed automatisch de applicatie zodra de pipeline is geslaagd.
 
