@@ -64,12 +64,4 @@ public class WordControllerEndToEndTest {
                 .expectStatus()
                 .isOk();
     }
-//    @Test
-//    public void addWord() {
-//        this.client.get()
-//                .uri("/word/add/testen")
-//                .exchange()
-//                .expectStatus()
-//                .isOk();
-//    }
 }

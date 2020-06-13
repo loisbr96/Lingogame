@@ -34,9 +34,5 @@ public class WordController {
     public Word addWord(@RequestParam(name = "word") String word) throws Exception{
         return wordService.addWord(word);
     }
-//    @RequestMapping("/add/{word}")
-//    public @ResponseBody Word addWord(@PathVariable(value = "word") String word)throws Exception{
-//        return wordService.addWord(word);
-//    }
 }
 
