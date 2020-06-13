@@ -50,7 +50,9 @@ De applicatie wordt automatisch gedeployd op Heroku zodra de pipeline is geslaag
 Beide zijn beperkt in geheugen in verband met gratis versies. Liberato monitort de performance van de applicatie en laat dit zien via een dashboard. Papertrail laat alle logging zien van de applicatie.
 
 ## Creatieve ruimte
-Geen bewuste extra inspanning gedaan. Overnagedacht om Thymeleaves te gebruiken, maar uiteindelijk gekozen alleen een welkomspagina te doen.  
+Overnagedacht om Thymeleaves te gebruiken, maar uiteindelijk gekozen alleen een welkomspagina te doen.  
+In LoLingo-word WireMock toegepast.
+Custom Spring banner toegevoegd bij beide applicaties.
 
 ## Bronvermelding
 Bronvermelding is aangegeven in de pom.xml. Er is geen code een op een overgenomen, meer gewerkt aan de hand van tutorials/voorbeelden.
@@ -62,7 +64,7 @@ Hieronder een overzicht voor de endpoints
 |---------|--------|
 | `/word` |  verkrijg alle woorden|
 | `/word/{id}` |Verkrijg het woord met dit ID|
-|`/word/add/{word}`|Voeg een woord toe |
+|`/word/add`|Voeg een woord toe met een `word` |
 | `/word` |  verkrijg alle woorden|
 |`/game`|Verkrijg alle games|
 | `/game/new` |  Maak een nieuwe game aan|

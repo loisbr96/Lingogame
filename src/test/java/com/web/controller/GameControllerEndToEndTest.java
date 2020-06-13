@@ -27,25 +27,34 @@ public class GameControllerEndToEndTest {
 
     @Before
     public void setUp(){
-        client = WebTestClient.bindToServer().baseUrl("http://localhost:" + port).build();
+        client = WebTestClient
+                .bindToServer()
+                .baseUrl("http://localhost:" + port)
+                .build();
     }
 
     @Test
     public void findAll(){
-        this.client.get().uri("/game").exchange().expectStatus().isOk().expectBodyList(Game.class);
+        this.client.get()
+                .uri("/game").exchange()
+                .expectStatus()
+                .isOk()
+                .expectBodyList(Game.class);
     }
 
     @Test
-    public void runGameWithoutExistingGame(){
+    public void runGameWithoutExistingGame() {
         MultipartBodyBuilder bodyBuilder = new MultipartBodyBuilder();
         bodyBuilder.part("gameId", (long) 1);
         bodyBuilder.part("tryWord", "testen");
 
-        this.client.post().uri("/game/run")
+        this.client.post()
+                .uri("/game/run")
                 .contentType(MediaType.MULTIPART_FORM_DATA)
                 .body(BodyInserters.fromMultipartData(bodyBuilder.build()))
                 .exchange()
-                .expectStatus().is5xxServerError();
+                .expectStatus()
+                .is5xxServerError();
     }
 
 }

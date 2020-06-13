@@ -23,12 +23,19 @@ public class ScoreControllerEndToEndTest {
 
     @Before
     public void setUp(){
-        client = WebTestClient.bindToServer().baseUrl("http://localhost:" + port).build();
+        client = WebTestClient
+                .bindToServer()
+                .baseUrl("http://localhost:" + port)
+                .build();
     }
 
     @Test
     public void findAll(){
-        this.client.get().uri("/score").exchange().expectStatus().isOk().expectBodyList(Score.class);
+        this.client.get()
+                .uri("/score")
+                .exchange()
+                .expectStatus()
+                .isOk()
+                .expectBodyList(Score.class);
     }
-
 }

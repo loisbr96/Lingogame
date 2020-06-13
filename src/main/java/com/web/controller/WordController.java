@@ -29,9 +29,14 @@ public class WordController {
         return wordService.findById(id);
     }
 
-    @RequestMapping("/add/{word}")
-    public @ResponseBody Word addWord(@PathVariable(value = "word") String word)throws Exception{
+    @PostMapping("/add")
+    @ResponseBody
+    public Word addWord(@RequestParam(name = "word") String word) throws Exception{
         return wordService.addWord(word);
     }
+//    @RequestMapping("/add/{word}")
+//    public @ResponseBody Word addWord(@PathVariable(value = "word") String word)throws Exception{
+//        return wordService.addWord(word);
+//    }
 }
 
