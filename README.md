@@ -27,6 +27,7 @@ Hieronder een overzicht voor de endpoints
 
 ## Build tools en pipeline
 De applicatie gebruikt de **build tool** Maven. Daarnaast is er op Github Action een workflow aangemaakt die zorgt dat er een **pipeline** draait als er naar master wordt gepusht. **Heroku** deployed automatisch de applicatie zodra de pipeline is geslaagd.
+Bezoek op: https://lolingo.herokuapp.com/ 
 
 ## Mate van functionaliteit
 Deze webapplicatie kan woorden toevoegen en ophalen. Deze worden gebruikt om een spel te spelen met een random woord en een maximaal aantal rondes. Na elke poging krijgt de gebruiker feedback per letter of deze correct, incorrect of verkeerde plaats heeft. Zodra de gebruiker heeft gewonnen kan de gebruiker de spelersnaam en het spel toevoegen aan het scoreboard. De applicatie heeft een welkomspagina, maar verder geen GUI.  
@@ -59,6 +60,7 @@ Sonarlint is de plugin geinstaleerd voor intelij, die vind en repareert kwalitei
 ## Deployment
 De applicatie wordt automatisch gedeployd op Heroku zodra de pipeline is geslaagd. Op heroku zijn 2 addons die de applicatie observeren: Liberato en Papertrail.
 Beide zijn beperkt in geheugen in verband met gratis versies. Liberato monitort de performance van de applicatie en laat dit zien via een dashboard. Papertrail laat alle logging zien van de applicatie.
+https://dashboard.heroku.com/apps/lolingo (Toegevoegd als collaborator)
 
 ## Creatieve ruimte
 Overnagedacht om Thymeleaves te gebruiken, maar uiteindelijk gekozen alleen een welkomspagina te doen.  
